@@ -1,21 +1,31 @@
-## Dockerize Postgres
+# Dockerize Postgres
 
-### Getting Started
+## Getting Started
 
 1. Clone This Repository
 2. Open and edit `.env` value
+3. Run `make up`
 
-### Database initialization
+## Available Scripts
 
-1. Put your initial db in `init.db` folder, the extension should be `.sql`
-2. Run `make up` to create container and run mysql bash
-3. Run `mysql -u ${POSTGRES_USER} -p -D ${POSTGRES_DB} < /docker-entrypoint-initdb.d/{your-database-dump-name}`
+### `make up`
 
-### Get MySQL IP
+Builds, (re)creates, starts, and attaches to containers for a service.
 
-1. Default IP is 172.8.0.2
-2. Run `sudo docker inspect ${MYSQL_CONTAINER} | grep IPAdd`
-3. Use the IP to connect from another container or application
+### `make up-build`
+
+Builds container
+
+### `make down`
+
+Stops containers and removes containers, networks, volumes, and images created by up.
+
+By default, the only things removed are:
+
+Containers for services defined in the Compose file
+Networks defined in the networks section of the Compose file
+The default network, if one is used
+Networks and volumes defined as external are never removed.
 
 ### License
 
